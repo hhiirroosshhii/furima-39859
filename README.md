@@ -22,7 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-<!-- 変更途中 -->
 
  # hurimaテーブル設計 
 
@@ -38,8 +37,8 @@ Things you may want to cover:
 | first_name_kana    | string  | null: false |
 | birthday           | data    | null: false |
 ### Association
-- has_many :item
-- has_many :buy
+- has_many :items
+- has_many :buys
 
 
 ## items テーブル
@@ -47,37 +46,37 @@ Things you may want to cover:
 | ------------- | ---------- | ----------------------------- |
 | product       | string     | null: false                   |
 | explanation   | text       | null: false                   |
-| genre_id      | text       | null: false                   |
-| genre_id        | string     | null: false                   |
-| genre_id  | intager    | null: false                   |
-| genre_id | string    | null: false                   |
-| genre_id | string     | null: false                   |
-| genre_id | intager    | null: false                   |
+| category      | text       | null: false                   |
+| status        | string     | null: false                   |
+| price         | intager    | null: false                   |
+| delivery_cost | string     | null: false                   |
+| delivery_area | string     | null: false                   |
+| delibery_days | string    | null: false                   |
 | user          | references | null: false, foreign_key: true|
 ### Association
-- belongs_to :user
-- has_one_attached :buy
+- belongs_to :users
+- has_one :buys
 
 ## buys テーブル
 | Column       | Type       |       Options                  |
 | -------------| ---------- | ------------------------------ |
+| user         | references | null: false, foreign_key: true |
 | item         | references | null: false, foreign_key: true |
-| product_name | string     | null: false                    |
 ### Association
-- belongs_to :user
-- belongs_to :item
-- has_one :b_information
+- belongs_to :users
+- belongs_to :items
+- has_one :b_informations
 
 
 ## b_informations テーブル
 | Column     | Type       |       Options                  |
 | ---------- | ---------- | ------------------------------ |
-| genre_id   | string     | null: false |
-| genre_id   | string     | null: false |
+| postal     | string     | null: false |
+| prefecture | string     | null: false |
 | local      | string     | null: false |
 | address    | string     | null: false |
 | building   | string     |             |
 | phone      | string     | null: false |
-| item       | references | null: false,foreign_key: true  |
+| item       | references | null: false,foreign_key: true, references: buys(id) |
 ### Association
-- belongs_to :buy
+- belongs_to :buys
