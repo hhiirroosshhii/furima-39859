@@ -48,12 +48,12 @@ Things you may want to cover:
 | ------------- | ---------- | ----------------------------- |
 | product       | string     | null: false                   |
 | explanation   | text       | null: false                   |
-| category_id   | intager    | null: false                   |
-| status_id     | intager    | null: false                   |
-| cost_id       | intager    | null: false                   |
-| area_id       | intager    | null: false                   |
-| need_day_id   | intager    | null: false                   |
-| price         | intager    | null: false                   |
+| category_id   | integer    | null: false                   |
+| status_id     | integer    | null: false                   |
+| cost_id       | integer    | null: false                   |
+| area_id       | integer    | null: false                   |
+| need_day_id   | integer    | null: false                   |
+| price         | integer    | null: false                   |
 | user          | references | null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -75,7 +75,7 @@ Things you may want to cover:
 | Column     | Type       |       Options                  |
 | ---------- | ---------- | ------------------------------ |
 | postal     | string     | null: false|
-| area_id    | intager    | null: false, foreign_key: true |
+| area_id    | integer    | null: false, foreign_key: true |
 | location   | string     | null: false |
 | address    | string     | null: false |
 | building   | string     |             |
