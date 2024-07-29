@@ -35,7 +35,7 @@ Things you may want to cover:
 | first_name         | string  | null: false |
 | last_name_kana     | string  | null: false |
 | first_name_kana    | string  | null: false |
-| birthday           | data    | null: false |
+| birthday           | date    | null: false |
 ### Association
 - has_many :items
 - has_many :buys
@@ -46,16 +46,17 @@ Things you may want to cover:
 | ------------- | ---------- | ----------------------------- |
 | product       | string     | null: false                   |
 | explanation   | text       | null: false                   |
-| category      | text       | null: false                   |
-| status        | string     | null: false                   |
+| category_id   | intager    | null: false                   |
+| status_id     | intager    | null: false                   |
+| cost_id       | intager    | null: false                   |
+| area_id       | intager    | null: false                   |
+| need_day_id   | intager    | null: false                   |
 | price         | intager    | null: false                   |
-| delivery_cost | string     | null: false                   |
-| delivery_area | string     | null: false                   |
-| delibery_days | string    | null: false                   |
 | user          | references | null: false, foreign_key: true|
 ### Association
-- belongs_to :users
-- has_one :buys
+- belongs_to :user
+- has_one :buy
+
 
 ## buys テーブル
 | Column       | Type       |       Options                  |
@@ -63,20 +64,20 @@ Things you may want to cover:
 | user         | references | null: false, foreign_key: true |
 | item         | references | null: false, foreign_key: true |
 ### Association
-- belongs_to :users
-- belongs_to :items
-- has_one :b_informations
+- belongs_to :user
+- belongs_to :item
+- has_one :b_information
 
 
 ## b_informations テーブル
 | Column     | Type       |       Options                  |
 | ---------- | ---------- | ------------------------------ |
-| postal     | string     | null: false |
-| prefecture | string     | null: false |
-| local      | string     | null: false |
+| area_id    | intager    | null: false, foreign_key: true |
+| location   | string     | null: false |
 | address    | string     | null: false |
 | building   | string     |             |
 | phone      | string     | null: false |
-| item       | references | null: false,foreign_key: true, references: buys(id) |
+| user       | references | null: false, foreign_key: true|
+| item       | references | null: false, foreign_key: true |
 ### Association
-- belongs_to :buys
+- belongs_to :buy
