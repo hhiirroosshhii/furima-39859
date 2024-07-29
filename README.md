@@ -29,7 +29,7 @@ Things you may want to cover:
 ## users テーブル
 | Column             | Type    | Options     |
 | ------------------ | --------| ----------- |
-| nickname           | string  | null: false, unique: true|
+| nickname           | string  | null: false |
 | email              | string  | null: false, unique: true|
 | encrypted_password | string  | null: false |
 | last_name          | string  | null: false |
@@ -74,6 +74,7 @@ Things you may want to cover:
 ## b_informations テーブル
 | Column     | Type       |       Options                  |
 | ---------- | ---------- | ------------------------------ |
+| postal     | string     | null: false|
 | area_id    | intager    | null: false, foreign_key: true |
 | location   | string     | null: false |
 | address    | string     | null: false |
