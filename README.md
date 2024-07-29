@@ -29,6 +29,7 @@ Things you may want to cover:
 ## users テーブル
 | Column             | Type    | Options     |
 | ------------------ | --------| ----------- |
+| nickname           | string  | null: false, unique: true|
 | email              | string  | null: false, unique: true|
 | encrypted_password | string  | null: false |
 | last_name          | string  | null: false |
@@ -36,6 +37,7 @@ Things you may want to cover:
 | last_name_kana     | string  | null: false |
 | first_name_kana    | string  | null: false |
 | birthday           | date    | null: false |
+
 ### Association
 - has_many :items
 - has_many :buys
@@ -77,7 +79,6 @@ Things you may want to cover:
 | address    | string     | null: false |
 | building   | string     |             |
 | phone      | string     | null: false |
-| user       | references | null: false, foreign_key: true|
-| item       | references | null: false, foreign_key: true |
+| buy        | references | null: false, foreign_key: true|
 ### Association
 - belongs_to :buy

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "items#edit"
+  root to: "items#index"
   resources :items, only:[:index, :edit, :new, :show]
 
 end
