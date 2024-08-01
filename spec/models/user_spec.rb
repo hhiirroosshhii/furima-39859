@@ -7,35 +7,40 @@ RSpec.describe User, type: :model do
   end
 
   describe 'ユーザー新規登録' do
-
-    it 'nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる' do
-      expect(@user).to be_valid
+    # 正常系
+    context '新規登録できるとき' do
+      it 'nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる' do
+        expect(@user).to be_valid
+      end
     end
 
-    it 'nicknameが空では登録できない' do
-      @user.nickname = '' 
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Nickname can't be blank")
-    end
 
-    it 'emailが空では登録できない' do
-      @user.email = '' 
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Email can't be blank")
-    end
+    # 異常系
+    context '新規登録できないとき' do
+      it 'nicknameが空では登録できない' do
+        @user.nickname = '' 
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Nickname can't be blank")
+      end
 
-    it 'passwordが空では登録できない' do
-      @user.password = ''
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Password can't be blank")
-    end
+      it 'emailが空では登録できない' do
+        @user.email = '' 
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email can't be blank")
+      end
 
-    it 'passwordとpassword_confirmationが不一致では登録できない' do
-      @user.password = '123456'
-      @user.password_confirmation = '1234567'
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
-    end
+      it 'passwordが空では登録できない' do
+        @user.password = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password can't be blank")
+      end
+
+      it 'passwordとpassword_confirmationが不一致では登録できない' do
+        @user.password = '123456'
+        @user.password_confirmation = '1234567'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
     
       it '重複したemailが存在する場合は登録できない' do
         @user.save
@@ -64,5 +69,37 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is too long (maximum is 128 characters)")
       end
+
+
+      it '名前（性）が空では登録できない' do
+        @user.last_name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name can't be blank")
+      end
+
+      it '名前（名）が空では登録できない' do
+        @user.first_name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name can't be blank")
+      end
+
+      it '名前カナ（性）が空では登録できない' do
+        @user.last_name_kana = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana can't be blank")
+      end
+
+      it '名前カナ（名）が空では登録できない' do
+        @user.first_name_kana = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana can't be blank")
+      end
+      
+      it '誕生日が空では登録できない' do
+        @user.birthday = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Birthday can't be blank")
+      end
+    end
   end
 end
