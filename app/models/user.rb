@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   # バリデーション
   validates :nickname, presence: true
-  validates :password, format:{with: STRONG_PASSWORD_REGEX}, length:{minimum: 6}
+  validates :password, format:{with: STRONG_PASSWORD_REGEX}
   validates :last_name, presence: true, format:{with: FULL_WIDTH_REGEX}
   validates :first_name, presence: true, format:{with: FULL_WIDTH_REGEX}
   validates :last_name_kana, presence: true, format:{with: KATAKANA_REGEX}
