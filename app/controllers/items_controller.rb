@@ -2,19 +2,35 @@ class ItemsController < ApplicationController
  
 
   def index
+    @items= Item.order("created_at DESC")
+
+
   end
 
   def edit
   end
 
   def new
+    @item = Item.new
   end
 
   def show
   end
 
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destory
+  end
+
   private
   def item_params
-    params.require(:item).permit(:product, :explanation, :category_id, :status_id, :cost_id, :area_id, :need_day_id, :price, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:product, :explanation, :category_id, :status_id, :cost_id, :area_id, :needday_id, :price, :image).merge(user_id: current_user.id)
   end
 end
