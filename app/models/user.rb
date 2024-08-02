@@ -16,8 +16,10 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true, format:{with: KATAKANA_REGEX}
   validates :birthday, presence: true
 
+  # devise
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
             
-   
+  #  アソシエーション
+  has_many :items
 end
