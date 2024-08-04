@@ -184,6 +184,8 @@
 </div>
   
 
+
+<%# ログインしているかどうかでリンク先を変更する %>
 <% if user_signed_in? %>
   <%= link_to(new_item_path, class: 'purchase-btn') do %>
     <span class='purchase-btn-text'>出品する</span>
@@ -195,10 +197,5 @@
     <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
   <% end %>
 <% end %>
-
-
-
-
-
 
 <%= render "shared/footer" %>
