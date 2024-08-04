@@ -10,7 +10,9 @@ class Item < ApplicationRecord
   belongs_to :cost
   belongs_to :area
   belongs_to :needday
+
   # バリデーション
   validates :product, :explanation, :price, :user, presence: true
   validates :category_id, :status_id, :cost_id, :area_id, :needday_id, presence: true, numericality:{other_than: 1, message: "can't be blank"}
+  validates :image, presence: true
 end
