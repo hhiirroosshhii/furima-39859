@@ -3,13 +3,19 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   # インスタンス変数の作成
   before do
-    @item = FactoryBot.build(:item)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.build(:item, user_id: @user.id)
   end
     
   describe '商品の登録' do
+    # 正常系
+    context '正常に商品を登録できないとき' do
+      it "各要素が存在すれば登録できる" do
+        expect(@item).to be_valid
+      end
+    end
 
 
-    
     # 異常系
     context '正常に商品を登録できないとき' do
       it 'productが空では登録できない' do
@@ -75,10 +81,14 @@ RSpec.describe Item, type: :model do
       it 'priceの値が300～9999999では登録できない' do
         @item.price = 10
         @item.valid?
-        expect(@item.errors.full_messages).to include("User can't be blank")
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
 
-
+      it 'priceの値が300～9999999では登録できない' do
+        @item.price = 10000000000
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
     end
   end
 
