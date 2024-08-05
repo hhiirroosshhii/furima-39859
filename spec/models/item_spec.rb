@@ -7,6 +7,8 @@ RSpec.describe Item, type: :model do
   end
     
   describe '商品の登録' do
+
+
     
     # 異常系
     context '正常に商品を登録できないとき' do
@@ -63,6 +65,19 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("User can't be blank")
       end
+
+      it 'priceが半角数値以外では登録できない' do
+        @item.price = 'あa'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it 'priceの値が300～9999999では登録できない' do
+        @item.price = 10
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User can't be blank")
+      end
+
 
     end
   end
