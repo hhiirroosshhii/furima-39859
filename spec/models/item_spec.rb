@@ -89,8 +89,42 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
+
+      it 'categoryに「---」が選択されている場合は出品できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+
+      it 'statusに「---」が選択されている場合は出品できない' do
+        @item.status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status can't be blank")
+      end
+
+      it 'costに「---」が選択されている場合は出品できない' do
+        @item.cost_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Cost can't be blank")
+      end
+  
+      it 'areaに「---」が選択されている場合は出品できない' do
+        @item.area_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Area can't be blank")
+      end
+
+      it 'needdayに「---」が選択されている場合は出品できない' do
+        @item.needday_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Needday can't be blank")
+      end
+
+      it 'ユーザーが紐付いていなければ投稿できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
+      end
     end
   end
-
-
 end
