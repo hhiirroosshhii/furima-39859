@@ -25,6 +25,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update
+    item = Item.find(params[:id])
+    item.update(item_params)
+    redirect_to root_path
+  end
+
   def destory
   end
 
