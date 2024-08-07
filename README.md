@@ -60,7 +60,7 @@ Things you may want to cover:
 - has_one :buy
 
 
-## buys テーブル
+## orders テーブル
 | Column       | Type       |       Options                  |
 | -------------| ---------- | ------------------------------ |
 | user         | references | null: false, foreign_key: true |
@@ -71,7 +71,7 @@ Things you may want to cover:
 - has_one :b_information
 
 
-## b_informations テーブル
+## informations テーブル
 | Column     | Type       |       Options                  |
 | ---------- | ---------- | ------------------------------ |
 | postal     | string     | null: false|
