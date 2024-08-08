@@ -1,12 +1,12 @@
 class OrdersController < ApplicationController
+
+
   def index
-    # @orders = Order.new.includes(:user, :item)
-    # @orders = Order.new(order_params)
-     @order = Order.new
+     @orders = Order.new
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.create(order_params)
     if @order.valid?
       @order.save
       return redirect_to root_path
@@ -18,7 +18,8 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.permit(:postal, :prefecture, :city, :house, :building, ).merge(user_id: current_user.id, item_id: params[:item_id], donation_id: @donation.id)
+    params.require(:order_information).permit(:postal, :area_id, :city, :address, :building, :phone, 
+                                              order_id: params[:order_id]).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
 end

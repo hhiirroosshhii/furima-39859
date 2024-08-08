@@ -40,7 +40,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :items
-- has_many :buys
+- has_many :orders
 
 
 ## items テーブル
@@ -57,7 +57,7 @@ Things you may want to cover:
 | user          | references | null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- has_one :buy
+- has_one :order
 
 
 ## orders テーブル
@@ -68,18 +68,18 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :b_information
+- has_one :info
 
 
-## informations テーブル
+## infos テーブル
 | Column     | Type       |       Options                  |
 | ---------- | ---------- | ------------------------------ |
-| postal     | string     | null: false|
-| area_id    | integer    | null: false, foreign_key: true |
-| location   | string     | null: false |
-| address    | string     | null: false |
-| building   | string     |             |
-| phone      | string     | null: false |
-| buy        | references | null: false, foreign_key: true|
+| postal     | string     | null: false                    |
+| area_id    | integer    | null: false                    |
+| city       | string     | null: false                    |
+| address    | string     | null: false                    |
+| building   | string     |                                |
+| phone      | string     | null: false                    |
+| order      | references | null: false, foreign_key: true |
 ### Association
-- belongs_to :buy
+- belongs_to :order
