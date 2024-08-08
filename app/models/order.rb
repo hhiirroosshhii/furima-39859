@@ -4,4 +4,6 @@ class Order < ApplicationRecord
   belongs_to :item
   has_one :information
 
+  # バリデーション
+  
 end
