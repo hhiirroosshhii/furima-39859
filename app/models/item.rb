@@ -14,7 +14,7 @@ class Item < ApplicationRecord
 
   # アソシエーション
   belongs_to :user
-  has_one :order
+  has_many :orders
   has_one_attached :image
 
 

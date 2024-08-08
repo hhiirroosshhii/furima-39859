@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
-
+  before_action :authenticate_user!, except: :index
 
   def index
-     @orders = Order.new
+    @order = Order.new
   end
 
   def create
@@ -18,8 +18,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order_information).permit(:postal, :area_id, :city, :address, :building, :phone, 
-                                              order_id: params[:order_id]).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:order_info).permit(:postal, :area_id, :city, :address, :building, :phone).merge(order_id: @order_id)
   end
 
 end
