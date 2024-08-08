@@ -7,7 +7,7 @@ class CreateInfos < ActiveRecord::Migration[7.0]
       t.string :address, null: false
       t.string :building
       t.string :phone, null: false
-      t.string :order, null: false, foreign_key: true
+      t.references :order, null: false, foreign_key: true
       
       t.timestamps
     end
