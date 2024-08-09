@@ -75,7 +75,7 @@ Things you may want to cover:
 | Column     | Type       |       Options                  |
 | ---------- | ---------- | ------------------------------ |
 | postal     | string     | null: false                    |
-| area_id    | integer    | null: false                    |
+| locate     | integer    | null: false                    |
 | city       | string     | null: false                    |
 | address    | string     | null: false                    |
 | building   | string     |                                |

@@ -18,7 +18,7 @@ class OrderInfo
 
 
   end
-  validates :building 
+  validate :building 
   # validates :prefecture, numericality: {other_than: 0, message: "can't be blank"}
 
   def save
